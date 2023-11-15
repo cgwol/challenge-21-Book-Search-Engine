@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.14",
+    "@apollo/client": "^3.8.6",
     "bootstrap": "^5.2.3",
     "graphql": "^16.6.0",
     "jwt-decode": "^3.1.2",
