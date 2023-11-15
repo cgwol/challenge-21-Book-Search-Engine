@@ -23,7 +23,7 @@ type User{
 }
 
 type Query {
-    loggedInUser: User
+    me: User
 }
 
 input SaveBook {
