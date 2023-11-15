@@ -8,6 +8,11 @@ const resolvers = {
                 return User.findOne({ _id: context.user._id })
             } throw AuthenticationError;
         },
+
+        users: async () => {
+            return await User.find({});
+        }
+
     },
     Mutation: {
         login: async (parent, { email, password }) => {
@@ -31,7 +36,7 @@ const resolvers = {
             try {
                 const user = await User.create({ username, email, password })
                 const token = signToken(user);
-            
+
 
                 if (!user) {
                     throw new Error('User creation failed');
@@ -44,22 +49,22 @@ const resolvers = {
         },
 
         saveBook: async (parent, { saveBook }, context) => {
-            try{
+            try {
                 console.log(context.user);
-            if (context.user) {
-                const updatedUser = await User.findOneAndUpdate(
+                if (context.user) {
+                    const updatedUser = await User.findOneAndUpdate(
                         { _id: context.user._id },
                         { $addToSet: { savedBooks: saveBook } },
                         { new: true, runValidators: true }
                     );
                     console.log(updatedUser);
-                    return updatedUser;               
-            } 
+                    return updatedUser;
+                }
                 throw AuthenticationError('You must be logged in to save a book.');
-            }catch(error){
+            } catch (error) {
                 console.log(error);
             }
-            },
+        },
 
         removeBook: async (parent, { bookId }, context) => {
             if (context.user) {
