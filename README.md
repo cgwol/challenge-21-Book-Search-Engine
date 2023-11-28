@@ -20,9 +20,9 @@
 
 ## Usage
 
-  This Project is deployed to Heroku at
+  This Project is deployed at
 
-    future link
+  [Heroku](https://mernchallenge21-5cf0b4fd1591.herokuapp.com/)
 
   To see run the project locally go to the project directory and run
 
